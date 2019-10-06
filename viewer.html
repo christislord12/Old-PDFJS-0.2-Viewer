@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Simple pdf.js page viewer</title>
+        <link rel="stylesheet" href="viewer.css"></link>
+
+        <script type="text/javascript" src="viewer.js"></script>
+        <script type="text/javascript" src="pdf.js"></script>
+        <script type="text/javascript" src="utils/fonts_utils.js"></script>
+        <script type="text/javascript" src="fonts.js"></script>
+        <script type="text/javascript" src="crypto.js"></script>
+        <script type="text/javascript" src="glyphlist.js"></script>
+  </head>
+
+  <body onload="load();">
+    <div id="controls">
+    <input type="file" style="float: right; margin: auto 32px;" onChange="load(this.value.toString());"></input>
+    <!-- This only opens supported PDFs from the source path...
+      -- Can we use JSONP to overcome the same-origin restrictions? -->
+      <button onclick="prevPage();">Previous</button>
+      <button onclick="nextPage();">Next</button>
+      <input type="text" id="pageNumber" onchange="gotoPage(this.value);"
+             value="1" size="4"></input>
+      <span id="numPages">--</span>
+      <span id="info"></span>
+    </div>
+
+    <div id="viewer">
+      <canvas id="canvas"></canvas>
+    </div>
+  </body>
+</html>
+
